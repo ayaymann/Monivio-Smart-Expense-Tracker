@@ -1,0 +1,217 @@
+.expense-list {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: background-color 0.3s;
+}
+
+.expense-list h2 {
+  margin: 0 0 22px;
+  font-size: 1.5rem;
+  color: var(--text-heading);
+}
+
+/* FILTERS */
+.filters {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr auto;
+  gap: 12px;
+  align-items: end;
+  margin-bottom: 20px;
+}
+
+.filter-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.filter-field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+.filter-field input,
+.filter-field select {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--input-bg);
+  color: var(--text-heading);
+  outline: none;
+  transition: background-color 0.3s, color 0.3s, border-color 0.2s;
+}
+
+.filter-field input:focus,
+.filter-field select:focus {
+  border-color: var(--primary);
+}
+
+.filters > button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 9px;
+  background: var(--btn-light-bg);
+  color: var(--btn-light-text);
+  font-weight: 600;
+}
+
+.filters > button:hover {
+  opacity: 0.85;
+}
+
+/* TOTAL */
+.running-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  background: var(--bg-muted);
+  border-radius: 10px;
+  transition: background-color 0.3s;
+}
+
+.running-total span {
+  font-weight: 600;
+  color: var(--text-body);
+}
+
+.running-total strong {
+  font-size: 1.25rem;
+  color: var(--text-heading);
+}
+
+/* EXPENSE CARDS */
+.expenses {
+  display: grid;
+  gap: 12px;
+}
+
+.expense-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.3s, border-color 0.3s;
+}
+
+.expense-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.expense-info h3 {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  color: var(--text-heading);
+}
+
+.expense-info p {
+  margin: 0 0 5px;
+  color: var(--text-muted);
+}
+
+.expense-info small {
+  color: var(--text-muted);
+}
+
+.expense-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.expense-actions > strong {
+  font-size: 1.15rem;
+  color: var(--text-heading);
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  padding: 7px 12px;
+  border: none;
+  border-radius: 7px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.actions button:first-child {
+  background: var(--btn-light-bg);
+  color: var(--btn-light-text);
+}
+
+.actions button:last-child {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.actions button:hover {
+  opacity: 0.85;
+}
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+  background: var(--bg-muted);
+  border-radius: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+
+  .filters {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .filters > button {
+    width: 100%;
+  }
+
+  .expense-card {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 550px) {
+
+  .app-container {
+    width: 94%;
+    padding-top: 25px;
+  }
+
+  .app-container > h1 {
+    font-size: 2rem;
+  }
+
+  .expense-form,
+  .expense-list {
+    padding: 20px;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .expense-card {
+    flex-direction: column;
+  }
+
+  .expense-actions {
+    width: 100%;
+    align-items: flex-start;
+  }
+}

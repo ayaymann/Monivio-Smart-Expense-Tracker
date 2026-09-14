@@ -1,0 +1,33 @@
+{
+  "expenses": [
+    {
+      "amount": 99.99,
+      "category": "Food",
+      "date": "2026-09-14",
+      "note": "lunch",
+      "id": "mS0tSdHaBCY"
+    },
+    {
+      "amount": 200,
+      "category": "Food",
+      "date": "2026-09-14",
+      "note": "dinner",
+      "id": "D7S0fRo3DlE"
+    },
+    {
+      "amount": 500,
+      "category": "Shopping",
+      "date": "2026-09-14",
+      "note": "shoes",
+      "id": "7rK_167jDpY"
+    },
+    {
+      "amount": 50,
+      "category": "Transport",
+      "date": "2026-09-14",
+      "note": "uber",
+      "id": "O9YoMeGHuBw"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

@@ -1,0 +1,216 @@
+<section class="expense-list">
+
+  <h2>Expenses</h2>
+
+
+  <!-- FILTERS -->
+  <div class="filters">
+
+    <!-- CATEGORY FILTER -->
+    <div class="filter-field">
+
+      <label for="category-filter">
+        Category
+      </label>
+
+      <select
+        id="category-filter"
+        [value]="selectedCategory()"
+        (change)="
+          setCategory(
+            $any($event.target).value
+          )
+        "
+      >
+
+        <!-- ALL OPTION -->
+        <option value="All">
+          All
+        </option>
+
+        @for (
+          category of categories;
+          track category
+        ) {
+
+          <option [value]="category">
+            {{ category }}
+          </option>
+
+        }
+
+      </select>
+
+    </div>
+
+
+    <!-- SEARCH -->
+    <div class="filter-field">
+
+      <label for="search">
+        Search Note
+      </label>
+
+      <input
+        id="search"
+        type="search"
+        placeholder="Search notes..."
+        [value]="searchTerm()"
+        (input)="onSearch($event)"
+      />
+
+    </div>
+
+
+
+    <!-- SORT BY -->
+    <div class="filter-field">
+
+      <label for="sort-by">
+        Sort By
+      </label>
+
+      <select
+        id="sort-by"
+        [value]="sortBy()"
+        (change)="
+          setSortBy(
+            $any($event.target).value
+          )
+        "
+      >
+
+        <option value="date">
+          Date
+        </option>
+
+        <option value="amount">
+          Amount
+        </option>
+
+      </select>
+
+    </div>
+
+
+
+    <!-- SORT DIRECTION -->
+    <button
+      type="button"
+      (click)="toggleSortDirection()"
+    >
+
+      Sort:
+      {{ sortDirection() === 'asc'
+        ? 'Ascending ↑'
+        : 'Descending ↓'
+      }}
+
+    </button>
+
+  </div>
+
+
+  <!-- RUNNING TOTAL -->
+  <div class="running-total">
+
+    <span>
+      Visible Total:
+    </span>
+
+    <strong>
+      {{ visibleTotal() | currency }}
+    </strong>
+
+  </div>
+
+
+  <!-- EMPTY STATE -->
+  @if (
+    filteredExpenses().length === 0
+  ) {
+
+    @if (
+      expenseService.expenses().length === 0
+    ) {
+
+      <p class="empty-state">
+        No expenses yet.
+      </p>
+
+    } @else {
+
+      <p class="empty-state">
+        No expenses match your current filters.
+      </p>
+
+    }
+
+  } @else {
+
+
+    <!-- EXPENSE CARDS -->
+    <div class="expenses">
+
+      @for (
+        expense of filteredExpenses();
+        track expense.id
+      ) {
+
+        <article
+          class="expense-card"
+          [appHighlightOverBudget]="expense.amount"
+        >
+
+          <div class="expense-info">
+
+            <h3>
+              {{ expense.category | categoryIcon }}
+            </h3>
+
+            <p>
+              {{ expense.note || 'No note' }}
+            </p>
+
+            <small>
+              {{ expense.date }}
+            </small>
+
+          </div>
+
+
+          <div class="expense-actions">
+
+            <strong>
+              {{ expense.amount | currency }}
+            </strong>
+
+            <div class="actions">
+
+              <button
+                type="button"
+                (click)="editExpense(expense)"
+              >
+                Edit
+              </button>
+
+              <button
+                type="button"
+                (click)="deleteExpense(expense.id)"
+              >
+                Delete
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  }
+
+</section>

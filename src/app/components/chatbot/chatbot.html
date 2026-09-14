@@ -1,0 +1,122 @@
+<section class="chatbot">
+
+  <div class="chatbot-header">
+    <div>
+      <h2>AI Expense Assistant</h2>
+      <p>
+        Ask me about your spending.
+      </p>
+    </div>
+  </div>
+
+
+  <div class="chat-messages">
+
+    @if (messages().length === 0) {
+
+      <div class="chat-empty">
+        <p>
+          Ask me something like:
+        </p>
+
+        <span>
+          "How much did I spend on food?"
+        </span>
+
+        <span>
+          "What was my largest expense?"
+        </span>
+
+        <span>
+          "How much did I spend this month?"
+        </span>
+      </div>
+
+    }
+
+
+    @for (
+      message of messages();
+      track $index
+    ) {
+
+      <div
+        class="message"
+        [class.user-message]="
+          message.sender === 'user'
+        "
+        [class.ai-message]="
+          message.sender === 'ai'
+        "
+      >
+
+        <span class="message-label">
+          {{
+            message.sender === 'user'
+              ? 'You'
+              : 'AI Assistant'
+          }}
+        </span>
+
+        <p>
+          {{ message.text }}
+        </p>
+
+      </div>
+
+    }
+
+
+    @if (loading()) {
+
+      <div class="message ai-message">
+
+        <span class="message-label">
+          AI Assistant
+        </span>
+
+        <p>
+          Thinking...
+        </p>
+
+      </div>
+
+    }
+
+  </div>
+
+
+  @if (error()) {
+
+    <p class="chat-error">
+      {{ error() }}
+    </p>
+
+  }
+
+
+  <div class="chat-input">
+
+    <input
+      type="text"
+      placeholder="Ask about your expenses..."
+      [value]="userMessage()"
+      (input)="onInput($event)"
+      (keydown)="onKeyDown($event)"
+      [disabled]="loading()"
+    />
+
+    <button
+      type="button"
+      (click)="sendMessage()"
+      [disabled]="
+        loading() ||
+        !userMessage().trim()
+      "
+    >
+      Send
+    </button>
+
+  </div>
+
+</section>
