@@ -3,6 +3,8 @@
 
 > **Track your spending. Understand your habits. Stay in control.**
 
+A modern Angular-based Expense Tracker that helps users manage, organize, and analyze their spending with smart filtering, budget tracking, and AI-powered insights.
+
 The application provides complete expense **CRUD operations**, filtering, searching, sorting, form validation, running expense totals, custom Angular features, **Dark Mode**, and an **AI Expense Assistant** powered by **Google Gemini through n8n**.
 
 ---
