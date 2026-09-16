@@ -1,6 +1,7 @@
-# 💰 Expense Tracker
+# 💰 Monivio — Smart Expense Tracker
+*Your money, clearly in view.*
 
-A modern **Expense Tracker web application built with Angular** that allows users to manage, organize, and analyze their expenses through a clean and responsive interface.
+> **Track your spending. Understand your habits. Stay in control.**
 
 The application provides complete expense **CRUD operations**, filtering, searching, sorting, form validation, running expense totals, custom Angular features, **Dark Mode**, and an **AI Expense Assistant** powered by **Google Gemini through n8n**.
 
