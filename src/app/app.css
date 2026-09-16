@@ -23,9 +23,29 @@ app-chatbot {
   color: var(--text-heading);
 }
 
-.title-area p {
+.brand-name {
+  color: #445cb0;
+}
+
+.subtitle {
   margin: 0;
   color: var(--text-muted);
+}
+
+.subtitle-lead,
+.subtitle-support {
+  display: block;
+}
+
+.subtitle-lead {
+  margin-bottom: 4px;
+  color: #4a5568;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.subtitle-support {
+  font-size: 0.95rem;
 }
 
 .theme-toggle {
