@@ -5,12 +5,18 @@
       <h1>Expense Tracker</h1>
       <p>Track your spending in one simple place</p>
     </div>
-    <button class="theme-toggle" (click)="toggleTheme()">
+
+    <button
+      class="theme-toggle"
+      (click)="toggleTheme()"
+    >
       {{ isDarkMode ? '☀️ Light' : '🌙 Dark' }}
     </button>
   </div>
 
-  <app-expense-form></app-expense-form>
+  <app-expense-form
+    (save)="onSave($event)"
+  ></app-expense-form>
 
   <app-expense-list
     (edit)="editExpense($event)"

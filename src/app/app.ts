@@ -2,9 +2,10 @@ import { Component, ViewChild } from '@angular/core';
 
 import { ExpenseForm } from './components/expense-form/expense-form';
 import { ExpenseList } from './components/expense-list/expense-list';
+import { Chatbot } from './components/chatbot/chatbot';
 
 import { Expense } from './models/expense.model';
-import { Chatbot } from './components/chatbot/chatbot';
+import { ExpenseService } from './services/expense.service';
 
 @Component({
   selector: 'app-root',
@@ -27,12 +28,21 @@ export class App {
 
   isDarkMode = false;
 
+  constructor(
+    private expenseService: ExpenseService
+  ) {}
+
+  onSave(expense: Omit<Expense, 'id'>): void {
+    this.expenseService.addExpense(expense);
+  }
+
   editExpense(expense: Expense): void {
     this.expenseForm?.editExpense(expense);
   }
 
   toggleTheme(): void {
     this.isDarkMode = !this.isDarkMode;
+
     if (this.isDarkMode) {
       document.body.classList.add('dark-mode');
     } else {
