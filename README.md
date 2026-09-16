@@ -13,8 +13,6 @@ The application provides complete expense **CRUD operations**, filtering, search
 
 <p align="center">
   <img src="public/screenshot-dashboard.png" alt="Monivio expense dashboard" width="32%">
-  <img src="public/screenshot-dark-mode.png" alt="Monivio dark mode" width="32%">
-  <img src="public/screenshot-ai-assistant.png" alt="Monivio AI expense assistant" width="32%">
 </p>
 
 The Expense Tracker is designed to provide a simple and practical way to record and understand personal spending.
