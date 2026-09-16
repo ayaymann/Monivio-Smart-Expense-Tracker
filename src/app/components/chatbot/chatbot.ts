@@ -47,7 +47,9 @@ export class Chatbot {
     signal('');
 
   private readonly sessionId =
-    crypto.randomUUID();
+    typeof crypto.randomUUID === 'function'
+      ? crypto.randomUUID()
+      : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
 
   sendMessage(): void {
 

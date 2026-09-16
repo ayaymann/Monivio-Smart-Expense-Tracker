@@ -45,7 +45,7 @@ export class ExpenseList {
 
   // SORT
   readonly sortBy =
-    signal<'date' | 'amount'>('date');
+    signal<'date' | 'amount' | 'category'>('date');
 
   readonly sortDirection =
     signal<'asc' | 'desc'>('desc');
@@ -109,6 +109,11 @@ export class ExpenseList {
           a.amount - b.amount;
       }
 
+      if (field === 'category') {
+        comparison =
+          a.category.localeCompare(b.category);
+      }
+
       return direction === 'asc'
         ? comparison
         : -comparison;
@@ -160,7 +165,7 @@ export class ExpenseList {
 
   // SORT FIELD
   setSortBy(
-    value: 'date' | 'amount'
+    value: 'date' | 'amount' | 'category'
   ): void {
 
     this.sortBy.set(value);

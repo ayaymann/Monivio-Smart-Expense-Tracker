@@ -1,12 +1,4 @@
 {
-  "expenses": [
-    {
-      "amount": 200,
-      "category": "Food",
-      "date": "2026-09-16",
-      "note": "Breakfast",
-      "id": "-qfXNdPHQaU"
-    }
-  ],
+  "expenses": [],
   "$schema": "./node_modules/json-server/schema.json"
 }

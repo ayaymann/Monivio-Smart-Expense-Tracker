@@ -16,6 +16,7 @@
       <label id="category-label">Category</label>
       <ul
         cdkListbox
+        [cdkListboxMultiple]="false"
         aria-labelledby="category-label"
         formControlName="category"
         class="custom-listbox"
@@ -35,10 +36,10 @@
 
     <div class="form-field">
       <label for="date">Date</label>
-      <input id="date" type="date" formControlName="date" />
+      <input id="date" type="date" [max]="today" formControlName="date" />
       @if (expenseForm.get('date')?.invalid && expenseForm.get('date')?.touched) {
         <div class="error">
-          Please select a date.
+          Please select today or an earlier date.
         </div>
       }
     </div>

@@ -4,6 +4,12 @@
   padding: 40px 0 60px;
 }
 
+app-expense-form,
+app-expense-list,
+app-chatbot {
+  display: block;
+}
+
 .app-header {
   display: flex;
   justify-content: space-between;
@@ -38,6 +44,11 @@
 }
 
 @media (max-width: 550px) {
+  .app-container {
+    width: 94%;
+    padding-top: 25px;
+  }
+
   .app-header {
     flex-direction: column;
     text-align: center;

@@ -27,16 +27,24 @@ export class App {
   chatbot?: Chatbot;
 
   isDarkMode = false;
+  private editingExpenseId?: string;
 
   constructor(
     private expenseService: ExpenseService
   ) {}
 
   onSave(expense: Omit<Expense, 'id'>): void {
+    if (this.editingExpenseId) {
+      this.expenseService.updateExpense(this.editingExpenseId, expense);
+      this.editingExpenseId = undefined;
+      return;
+    }
+
     this.expenseService.addExpense(expense);
   }
 
   editExpense(expense: Expense): void {
+    this.editingExpenseId = expense.id;
     this.expenseForm?.editExpense(expense);
   }
 

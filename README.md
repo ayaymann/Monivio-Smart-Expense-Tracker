@@ -43,8 +43,6 @@ Users can create an expense by entering:
 
 The form uses Angular Reactive Forms with validation.
 
-### Edit Expense
-
 Existing expenses can be edited directly through the same form.
 
 ### Delete Expense
@@ -85,6 +83,7 @@ Expenses can be sorted by:
 
 - Date
 - Amount
+- Category
 
 Each field can be sorted in:
 
@@ -688,6 +687,44 @@ http://localhost:4200
 
 ---
 
+# 📱 8. Run in an Android Emulator
+
+The application remains an Angular web application. You do not need to convert it to Flutter. To test it in an Android Studio emulator, use an Android Virtual Device (AVD), such as a Pixel 8 Pro running Android 14 (API 34).
+
+## Start the emulator
+
+Open the AVD from Android Studio, or launch it from PowerShell:
+
+```powershell
+flutter emulators --launch Pixel_8_Pro
+```
+
+If Flutter does not list the AVD, start it from Android Studio's Device Manager instead.
+
+## Start the REST API for emulator access
+
+The emulator cannot use your computer's `localhost` directly. Start `json-server` on all network interfaces:
+
+```bash
+json-server --watch db.json --port 3000 --host 0.0.0.0
+```
+
+## Start Angular for emulator access
+
+In another terminal, run:
+
+```bash
+npm start -- --host 0.0.0.0
+```
+
+Open Chrome inside the Android emulator and visit:
+
+```text
+http://10.0.2.2:4200
+```
+
+Inside the Android emulator, `10.0.2.2` maps to the host computer. The application automatically uses `http://10.0.2.2:3000/expenses` for its REST API when loaded from this address.
+
 # 🚀 Running the Full Application
 
 You will normally need the following services running:
@@ -695,16 +732,16 @@ You will normally need the following services running:
 ### Terminal 1 — REST API
 
 ```bash
-json-server --watch db.json --port 3000
+json-server --watch db.json --port 3000 --host 0.0.0.0
 ```
 
 ### Terminal 2 — Angular
 
 ```bash
-ng e2e
+npm start -- --host 0.0.0.0
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+For desktop browser testing, open `http://localhost:4200`. For Android emulator testing, use the commands and URL in the [Run in an Android Emulator](#-8-run-in-an-android-emulator) section.
 
 ## Additional Resources
 
